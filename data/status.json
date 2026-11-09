@@ -1,0 +1,35 @@
+{
+ "last_run": "2026-11-10T02:12:10+03:30",
+ "mode": "test",
+ "sources": {
+  "jobinja": {
+   "ok": false,
+   "listed": 0,
+   "checked": 0,
+   "relevant": 0,
+   "error": "جابینجا درخواست‌های سرورهای خارج از ایران (گیت‌هاب) را مسدود می‌کند (403)",
+   "skipped": true
+  },
+  "jobvision": {
+   "ok": true,
+   "listed": 116,
+   "checked": 19,
+   "relevant": 18,
+   "error": null
+  },
+  "irantalent": {
+   "ok": true,
+   "listed": 37,
+   "checked": 2,
+   "relevant": 1,
+   "error": null
+  }
+ },
+ "relevant": 19,
+ "sent": 5,
+ "errors": [],
+ "auto_apply": {
+  "jobinja": false,
+  "irantalent": false
+ }
+}
