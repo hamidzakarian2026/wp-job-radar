@@ -1,0 +1,46 @@
+name: Scan jobs
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "scan = normal | test = send latest N now | dry = no sending"
+        type: choice
+        options: [scan, test, dry]
+        default: scan
+      count:
+        description: "How many jobs to send in test mode"
+        default: "5"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q -r requirements.txt
+      - name: Scan & send
+        env:
+          MODE: ${{ inputs.mode || 'scan' }}
+          COUNT: ${{ inputs.count || '5' }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          JOBINJA_COOKIE: ${{ secrets.JOBINJA_COOKIE }}
+          IRANTALENT_TOKEN: ${{ secrets.IRANTALENT_TOKEN }}
+        run: python scan.py --mode "$MODE" --count "$COUNT"
+      - name: Save state
+        if: always() && (inputs.mode || 'scan') != 'dry'
+        run: bash scripts/commit_state.sh "scan ${{ inputs.mode || 'scan' }}"
