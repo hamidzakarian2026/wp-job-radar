@@ -1,0 +1,45 @@
+name: Resume buttons
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: buttons
+  cancel-in-progress: false
+
+jobs:
+  buttons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - id: chk
+        env:
+          A: ${{ secrets.JOBINJA_COOKIE }}
+          B: ${{ secrets.IRANTALENT_TOKEN }}
+          T: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: |
+          if [ -n "$T" ] && [ -n "$A$B" ]; then echo "on=1" >> "$GITHUB_OUTPUT"; else echo "on=0" >> "$GITHUB_OUTPUT"; fi
+      - if: steps.chk.outputs.on == '1'
+        uses: actions/checkout@v4
+      - if: steps.chk.outputs.on == '1'
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - if: steps.chk.outputs.on == '1'
+        run: pip install -q -r requirements.txt
+      - if: steps.chk.outputs.on == '1'
+        name: Process resume buttons
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          JOBINJA_COOKIE: ${{ secrets.JOBINJA_COOKIE }}
+          IRANTALENT_TOKEN: ${{ secrets.IRANTALENT_TOKEN }}
+        run: python buttons.py
+      - if: always() && steps.chk.outputs.on == '1'
+        run: bash scripts/commit_state.sh "buttons"
