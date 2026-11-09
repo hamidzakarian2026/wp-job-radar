@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>رادار وردپرس</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<style>
+:root{--bg:#f5f6fa;--card:#fff;--ink:#14161f;--mute:#6b7083;--line:#e7e9f0;--acc:#3858e9;--acc2:#eef1ff;--ok:#12a150;--bad:#e5484d;--warn:#d97706;--r:16px}
+@media (prefers-color-scheme:dark){:root{--bg:#0d0f15;--card:#161923;--ink:#eceef5;--mute:#8d93a7;--line:#262a37;--acc:#7b93ff;--acc2:#1d2340}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 Vazirmatn,Tahoma,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:28px 18px 60px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{width:44px;height:44px;border-radius:12px;background:var(--acc);display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px}
+h1{font-size:20px;margin:0}
+.sub{color:var(--mute);font-size:13px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:14px;padding:9px 16px;border-radius:12px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:.15s}
+.btn:hover{border-color:var(--acc)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff;font-weight:700}
+.btn.pri:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.55;cursor:wait}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+@media (max-width:820px){.grid{grid-template-columns:repeat(2,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px}
+.stat .k{color:var(--mute);font-size:12.5px;display:flex;align-items:center;gap:6px}
+.stat .v{font-size:20px;font-weight:800;margin-top:4px}
+.stat .n{color:var(--mute);font-size:12px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--mute);display:inline-block}
+.dot.ok{background:var(--ok)}.dot.bad{background:var(--bad)}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.actions h2,.jobs h2{font-size:16px;margin:0 0 4px}
+select{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 10px}
+.run{margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--acc2);font-size:14px;display:none}
+.run.show{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.run a{color:var(--acc)}
+.spin{width:16px;height:16px;border:2px solid var(--acc);border-top-color:transparent;border-radius:50%;animation:s 1s linear infinite}
+@keyframes s{to{transform:rotate(360deg)}}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;margin:6px 0 14px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--mute);border-radius:999px;padding:5px 12px;font:inherit;font-size:13px;cursor:pointer}
+.chip.on{background:var(--acc);border-color:var(--acc);color:#fff}
+input[type=search],input[type=password]{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:8px 12px;min-width:220px}
+.list{display:grid;gap:10px}
+.job{display:grid;grid-template-columns:1fr auto;gap:6px 16px;align-items:start}
+.job .t{font-weight:700;font-size:15.5px}
+.job .m{color:var(--mute);font-size:13px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.job .s{color:var(--mute);font-size:13px;grid-column:1/-1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pill{font-size:11.5px;padding:2px 9px;border-radius:999px;background:var(--acc2);color:var(--acc);font-weight:700;white-space:nowrap}
+.side{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.side a{color:var(--acc);font-size:13px;text-decoration:none}
+.empty{color:var(--mute);text-align:center;padding:40px 10px}
+dialog{border:none;border-radius:20px;padding:0;max-width:520px;width:calc(100% - 28px);background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(10,12,20,.55)}
+.dlg{padding:22px}
+.dlg ol{padding-inline-start:20px;color:var(--mute);font-size:13.5px}
+.dlg a{color:var(--acc)}
+.row{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.row input{flex:1}
+.note{font-size:12.5px;color:var(--mute);margin-top:10px}
+.badge-auto{font-size:12px;color:var(--mute);margin-top:10px}
+.badge-auto b{color:var(--ink)}
+footer{margin-top:28px;color:var(--mute);font-size:12px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">W</div>
+      <div><h1>رادار آگهی‌های وردپرس</h1><div class="sub">اسکن ساعتی جابینجا، جاب‌ویژن و ایران‌تلنت ← کانال تلگرام</div></div>
+    </div>
+    <button class="btn" id="openSettings">⚙️ تنظیمات</button>
+  </header>
+
+  <section class="grid" id="stats"></section>
+
+  <section class="card actions-card">
+    <div class="actions" style="justify-content:space-between">
+      <div><h2>تست ربات</h2><div class="sub">جدیدترین آگهی‌های مرتبط امروز را همین الان به کانال بفرست.</div></div>
+      <div class="actions">
+        <select id="count"><option>3</option><option selected>5</option><option>10</option></select>
+        <button class="btn pri" id="sendTest">📨 ارسال به کانال</button>
+        <button class="btn" id="scanNow">🔄 اسکن همین حالا</button>
+        <button class="btn" id="dryRun" title="فقط بررسی، بدون ارسال">🧪 اجرای آزمایشی</button>
+      </div>
+    </div>
+    <div class="run" id="run"></div>
+    <div class="badge-auto" id="auto"></div>
+  </section>
+
+  <section class="jobs" style="margin-top:22px">
+    <div class="toolbar">
+      <div class="chips" id="tabs"></div>
+      <input type="search" id="q" placeholder="جستجو در عنوان یا شرکت…">
+    </div>
+    <div class="chips" id="srcs" style="margin-bottom:12px"></div>
+    <div class="list" id="list"><div class="empty">در حال بارگذاری…</div></div>
+  </section>
+  <footer>wp-job-radar · داده‌ها از مخزن گیت‌هاب خوانده می‌شوند</footer>
+</div>
+
+<dialog id="settings"><div class="dlg">
+  <h2 style="margin:0 0 6px;font-size:17px">اتصال به گیت‌هاب</h2>
+  <div class="sub">برای اجرای دستی از این صفحه، یک توکن گیت‌هاب لازم است. توکن فقط در همین مرورگر ذخیره می‌شود و بدون آن هیچ‌کس نمی‌تواند از این صفحه چیزی اجرا کند.</div>
+  <ol>
+    <li><a id="patLink" target="_blank" rel="noopener">صفحه‌ی ساخت توکن</a> را باز کن (Fine-grained).</li>
+    <li>در Repository access فقط <b>wp-job-radar</b> را انتخاب کن.</li>
+    <li>در Permissions دسترسی <b>Actions: Read and write</b> را بده.</li>
+    <li>توکن را بساز، کپی کن و اینجا بگذار.</li>
+  </ol>
+  <div class="row"><input type="password" id="token" placeholder="github_pat_…" autocomplete="off"></div>
+  <div class="row">
+    <button class="btn pri" id="saveToken">ذخیره</button>
+    <button class="btn" id="clearToken">حذف توکن</button>
+    <button class="btn" id="closeSettings">بستن</button>
+  </div>
+  <div class="note" id="tokenState"></div>
+</div></dialog>
+
+<script>
+const OWNER = "hamidzakarian2026", REPO = "wp-job-radar", WF = "scan.yml";
+const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+const SRC = {jobinja: "جابینجا", jobvision: "جاب‌ویژن", irantalent: "ایران‌تلنت"};
+const $ = s => document.querySelector(s);
+const store = {
+  get(k){ try { return localStorage.getItem(k) || ""; } catch { return mem[k] || ""; } },
+  set(k, v){ try { v ? localStorage.setItem(k, v) : localStorage.removeItem(k); } catch { mem[k] = v; } }
+};
+const mem = {};
+let JOBS = [], STATUS = null, tab = "today", src = "all", q = "";
+
+function el(tag, attrs = {}, ...kids){
+  const e = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") e.className = v; else if (k.startsWith("on")) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v);
+  }
+  for (const c of kids.flat()) if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(c));
+  return e;
+}
+const fa = n => Number(n).toLocaleString("fa-IR");
+function tehranToday(){ return new Intl.DateTimeFormat("en-CA", {timeZone: "Asia/Tehran"}).format(new Date()); }
+function daysAgo(d){ if (!d) return null; return Math.round((new Date(tehranToday()) - new Date(d.slice(0,10))) / 864e5); }
+function rel(d){ const n = daysAgo(d); if (n == null) return ""; return n <= 0 ? "امروز" : n === 1 ? "دیروز" : `${fa(n)} روز پیش`; }
+function jal(d){ try { return new Intl.DateTimeFormat("fa-IR-u-ca-persian", {day: "numeric", month: "long"}).format(new Date(d.slice(0,10) + "T12:00:00")); } catch { return ""; } }
+function ago(iso){
+  const m = Math.round((Date.now() - new Date(iso)) / 6e4);
+  if (m < 1) return "همین الان"; if (m < 60) return `${fa(m)} دقیقه پیش`;
+  const h = Math.round(m / 60); return h < 24 ? `${fa(h)} ساعت پیش` : `${fa(Math.round(h / 24))} روز پیش`;
+}
+
+async function gh(path, opts = {}){
+  const token = store.get("gh_token");
+  const headers = {Accept: "application/vnd.github+json", ...(opts.headers || {})};
+  if (token) headers.Authorization = `Bearer ${token}`;
+  return fetch(path.startsWith("http") ? path : API + path, {...opts, headers});
+}
+async function readData(name){
+  const r = await gh(`/contents/data/${name}?ref=main&t=${Date.now()}`, {headers: {Accept: "application/vnd.github.raw+json"}});
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error(`HTTP ${r.status}`);
+  return r.json();
+}
+
+async function load(){
+  try {
+    const [jobs, status] = await Promise.all([readData("jobs.json"), readData("status.json")]);
+    JOBS = jobs || []; STATUS = status;
+  } catch (e) {
+    $("#list").replaceChildren(el("div", {class: "empty"}, `خواندن داده‌ها ممکن نشد (${e.message}). اگر محدودیت درخواست گیت‌هاب است، توکن را در تنظیمات وارد کن.`));
+    return;
+  }
+  renderStats(); renderFilters(); renderJobs();
+}
+
+function renderStats(){
+  const s = STATUS, box = $("#stats"); box.replaceChildren();
+  box.append(el("div", {class: "card stat"},
+    el("div", {class: "k"}, "🕒 آخرین اسکن"),
+    el("div", {class: "v"}, s ? ago(s.last_run) : "هنوز اجرا نشده"),
+    el("div", {class: "n"}, s ? `${fa(s.relevant || 0)} آگهی مرتبط · ${fa(s.sent || 0)} ارسال` : "اسکن خودکار هر ساعت")));
+  for (const [k, label] of Object.entries(SRC)) {
+    const i = s && s.sources && s.sources[k];
+    const ok = i && i.ok;
+    box.append(el("div", {class: "card stat"},
+      el("div", {class: "k"}, el("span", {class: "dot " + (i ? (ok ? "ok" : "bad") : "")}), label),
+      el("div", {class: "v"}, i ? (ok ? `${fa(i.relevant)} مرتبط` : "خطا") : "—"),
+      el("div", {class: "n", title: i && i.error || ""}, i ? (ok ? `${fa(i.listed)} آگهی بررسی شد` : (i.error || "").slice(0, 60)) : "")));
+  }
+  const a = s && s.auto_apply || {};
+  $("#auto").replaceChildren("ارسال خودکار رزومه: ",
+    el("b", {}, `جابینجا ${a.jobinja ? "✅" : "⛔"}`), " · ", el("b", {}, `ایران‌تلنت ${a.irantalent ? "✅" : "⛔"}`), " · ",
+    el("b", {}, "جاب‌ویژن ↗ لینک سایت"));
+}
+
+function renderFilters(){
+  const tabs = [["today", "امروز"], ["all", "همه"]];
+  $("#tabs").replaceChildren(...tabs.map(([k, l]) => el("button", {class: "chip" + (tab === k ? " on" : ""), onclick: () => { tab = k; renderFilters(); renderJobs(); }}, l)));
+  const srcs = [["all", "همه‌ی سایت‌ها"], ...Object.entries(SRC)];
+  $("#srcs").replaceChildren(...srcs.map(([k, l]) => el("button", {class: "chip" + (src === k ? " on" : ""), onclick: () => { src = k; renderFilters(); renderJobs(); }}, l)));
+}
+
+function renderJobs(){
+  let list = JOBS.slice();
+  if (tab === "today") list = list.filter(j => daysAgo(j.posted) === 0 || daysAgo(j.sent_at) === 0);
+  if (src !== "all") list = list.filter(j => j.source === src);
+  if (q) list = list.filter(j => `${j.title} ${j.company}`.toLowerCase().includes(q.toLowerCase()));
+  if (!list.length) {
+    $("#list").replaceChildren(el("div", {class: "empty card"}, JOBS.length ? "آگهی‌ای با این فیلتر نیست." : "هنوز آگهی‌ای ارسال نشده. بعد از اولین اسکن اینجا پر می‌شود."));
+    return;
+  }
+  $("#list").replaceChildren(...list.map(j => el("article", {class: "card job"},
+    el("div", {},
+      el("div", {class: "t"}, j.title),
+      el("div", {class: "m"},
+        j.company && el("span", {}, "🏢 " + j.company),
+        j.location && el("span", {}, "📍 " + j.location + (j.remote ? " · دورکاری" : "")),
+        j.salary && el("span", {}, "💰 " + j.salary),
+        el("span", {}, "🗓 " + [rel(j.posted), jal(j.posted)].filter(Boolean).join(" · ")))),
+    el("div", {class: "side"},
+      el("span", {class: "pill"}, SRC[j.source] || j.source),
+      el("a", {href: j.url, target: "_blank", rel: "noopener"}, "مشاهده آگهی ↗")),
+    j.summary && el("div", {class: "s"}, j.summary))));
+}
+
+function runBox(html, spinning){
+  const b = $("#run"); b.className = "run show"; b.replaceChildren();
+  if (spinning) b.append(el("span", {class: "spin"}));
+  b.append(...html);
+}
+
+async function dispatch(mode){
+  if (!store.get("gh_token")) { openSettings("برای اجرای دستی اول توکن را وارد کن."); return; }
+  const btns = ["#sendTest", "#scanNow", "#dryRun"].map(s => $(s));
+  btns.forEach(b => b.disabled = true);
+  const started = Date.now();
+  const label = {test: "ارسال آگهی‌ها به کانال", scan: "اسکن کامل", dry: "اجرای آزمایشی"}[mode];
+  runBox([`در حال ارسال درخواست «${label}»…`], true);
+  try {
+    const r = await gh(`/actions/workflows/${WF}/dispatches`, {method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ref: "main", inputs: {mode, count: $("#count").value}})});
+    if (r.status === 401 || r.status === 403) throw new Error("توکن معتبر نیست یا دسترسی Actions ندارد");
+    if (r.status !== 204) throw new Error(`HTTP ${r.status}`);
+    let run = null;
+    for (let i = 0; i < 120; i++) {
+      await new Promise(res => setTimeout(res, i < 5 ? 3000 : 5000));
+      const rr = await gh(`/actions/workflows/${WF}/runs?event=workflow_dispatch&per_page=5`);
+      const js = await rr.json();
+      run = (js.workflow_runs || []).find(x => new Date(x.created_at).getTime() >= started - 15000) || run;
+      if (!run) { runBox(["در صف گیت‌هاب…"], true); continue; }
+      const link = el("a", {href: run.html_url, target: "_blank", rel: "noopener"}, "مشاهده‌ی لاگ ↗");
+      if (run.status !== "completed") { runBox([run.status === "queued" ? "در صف اجرا… " : "در حال اجرا… ", link], true); continue; }
+      if (run.conclusion === "success") {
+        runBox([`✅ «${label}» با موفقیت انجام شد. `, mode === "test" ? "کانال تلگرام را چک کن. " : "", link]);
+        setTimeout(load, 4000);
+      } else {
+        runBox([`❌ اجرا ناموفق بود (${run.conclusion}). `, link]);
+      }
+      break;
+    }
+  } catch (e) {
+    runBox([`❌ ${e.message}`]);
+  } finally {
+    btns.forEach(b => b.disabled = false);
+  }
+}
+
+function openSettings(msg){
+  $("#token").value = "";
+  $("#tokenState").textContent = msg || (store.get("gh_token") ? "✅ توکن ذخیره شده است." : "توکنی ذخیره نشده.");
+  $("#settings").showModal();
+}
+$("#patLink").href = "https://github.com/settings/personal-access-tokens/new?name=wp-job-radar-page&description=Run%20wp-job-radar%20workflows&target_name=" + OWNER + "&expires_in=none&actions=write";
+$("#openSettings").onclick = () => openSettings();
+$("#closeSettings").onclick = () => $("#settings").close();
+$("#saveToken").onclick = async () => {
+  const v = $("#token").value.trim(); if (!v) return;
+  store.set("gh_token", v);
+  const r = await gh("");
+  $("#tokenState").textContent = r.ok ? "✅ توکن ذخیره و تأیید شد." : `⚠️ توکن ذخیره شد ولی گیت‌هاب خطای ${r.status} داد.`;
+  if (r.ok) setTimeout(() => { $("#settings").close(); load(); }, 900);
+};
+$("#clearToken").onclick = () => { store.set("gh_token", ""); $("#tokenState").textContent = "توکن حذف شد."; };
+$("#sendTest").onclick = () => dispatch("test");
+$("#scanNow").onclick = () => dispatch("scan");
+$("#dryRun").onclick = () => dispatch("dry");
+$("#q").oninput = e => { q = e.target.value.trim(); renderJobs(); };
+load();
+setInterval(load, 120000);
+</script>
+</body>
+</html>
