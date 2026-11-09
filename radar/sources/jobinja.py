@@ -1,4 +1,5 @@
 import json
+import os
 import re
 import time
 
@@ -9,6 +10,8 @@ from ..text import age_from_text, html_to_text, norm, to_date, today
 from datetime import timedelta
 
 NAME = "jobinja"
+ENABLED = os.getenv("JOBINJA_ENABLED") == "1"
+DISABLED_NOTE = "جابینجا درخواست‌های سرورهای خارج از ایران (گیت‌هاب) را مسدود می‌کند (403)"
 SITE = "https://jobinja.ir"
 KEYWORDS = ["وردپرس", "wordpress", "طراح سایت", "طراح وب سایت", "ووکامرس", "المنتور"]
 URL_RE = re.compile(r"/companies/([^/?#]+)/jobs/([^/?#]+)")

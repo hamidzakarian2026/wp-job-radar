@@ -22,6 +22,11 @@ def collect(mode, seen, max_age):
     found, status = [], {}
     for name, src in SOURCES.items():
         info = {"ok": False, "listed": 0, "checked": 0, "relevant": 0, "error": None}
+        if not getattr(src, "ENABLED", True):
+            info.update(skipped=True, error=getattr(src, "DISABLED_NOTE", "disabled"))
+            status[name] = info
+            log(f"[{name}] skipped")
+            continue
         try:
             stubs = src.search(s)
             info["listed"] = len(stubs)
@@ -145,7 +150,8 @@ def main():
         "relevant": len(found),
         "sent": sent,
         "errors": errors[:5],
-        "auto_apply": {"jobinja": bool(os.getenv("JOBINJA_COOKIE")), "irantalent": bool(os.getenv("IRANTALENT_TOKEN"))},
+        "auto_apply": {"jobinja": bool(os.getenv("JOBINJA_COOKIE")) and os.getenv("JOBINJA_ENABLED") == "1",
+                       "irantalent": bool(os.getenv("IRANTALENT_TOKEN"))},
     })
     log(f"done: relevant={len(found)} chosen={len(chosen)} sent={sent}")
     if errors and not sent:

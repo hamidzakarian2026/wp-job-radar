@@ -185,14 +185,14 @@ function renderStats(){
     const i = s && s.sources && s.sources[k];
     const ok = i && i.ok;
     box.append(el("div", {class: "card stat"},
-      el("div", {class: "k"}, el("span", {class: "dot " + (i ? (ok ? "ok" : "bad") : "")}), label),
-      el("div", {class: "v"}, i ? (ok ? `${fa(i.relevant)} مرتبط` : "خطا") : "—"),
-      el("div", {class: "n", title: i && i.error || ""}, i ? (ok ? `${fa(i.listed)} آگهی بررسی شد` : (i.error || "").slice(0, 60)) : "")));
+      el("div", {class: "k"}, el("span", {class: "dot " + (i ? (ok ? "ok" : i.skipped ? "" : "bad") : "")}), label),
+      el("div", {class: "v"}, i ? (ok ? `${fa(i.relevant)} مرتبط` : i.skipped ? "غیرفعال" : "خطا") : "—"),
+      el("div", {class: "n", title: i && i.error || ""}, i ? (ok ? `${fa(i.listed)} آگهی بررسی شد` : i.skipped ? "سرور گیت‌هاب را مسدود می‌کند" : (i.error || "").slice(0, 60)) : "")));
   }
   const a = s && s.auto_apply || {};
   $("#auto").replaceChildren("ارسال خودکار رزومه: ",
-    el("b", {}, `جابینجا ${a.jobinja ? "✅" : "⛔"}`), " · ", el("b", {}, `ایران‌تلنت ${a.irantalent ? "✅" : "⛔"}`), " · ",
-    el("b", {}, "جاب‌ویژن ↗ لینک سایت"));
+    el("b", {}, `ایران‌تلنت ${a.irantalent ? "✅ فعال" : "⛔ غیرفعال"}`), " · ",
+    el("b", {}, "جاب‌ویژن ↗ لینک مستقیم سایت"));
 }
 
 function renderFilters(){
@@ -288,7 +288,7 @@ $("#scanNow").onclick = () => dispatch("scan");
 $("#dryRun").onclick = () => dispatch("dry");
 $("#q").oninput = e => { q = e.target.value.trim(); renderJobs(); };
 load();
-setInterval(load, 120000);
+setInterval(() => { if (!document.hidden) load(); }, 300000);
 </script>
 </body>
 </html>

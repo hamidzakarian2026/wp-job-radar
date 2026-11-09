@@ -15,7 +15,7 @@ class ApplyError(Exception):
 
 def available(job):
     if job.get("source") == "jobinja":
-        return bool(os.getenv("JOBINJA_COOKIE"))
+        return bool(os.getenv("JOBINJA_COOKIE")) and os.getenv("JOBINJA_ENABLED") == "1"
     if job.get("source") == "irantalent":
         return bool(os.getenv("IRANTALENT_TOKEN")) and not job.get("screening") and not job.get("external")
     return False
