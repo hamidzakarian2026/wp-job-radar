@@ -1,5 +1,5 @@
 {
- "last_run": "2026-11-11T19:41:24+03:30",
+ "last_run": "2026-11-12T02:12:01+03:30",
  "mode": "scan",
  "sources": {
   "jobinja": {
@@ -13,20 +13,20 @@
   "jobvision": {
    "ok": true,
    "listed": 122,
-   "checked": 11,
-   "relevant": 10,
+   "checked": 1,
+   "relevant": 0,
    "error": null
   },
   "irantalent": {
    "ok": true,
    "listed": 35,
-   "checked": 1,
+   "checked": 0,
    "relevant": 0,
    "error": null
   }
  },
- "relevant": 10,
- "sent": 10,
+ "relevant": 0,
+ "sent": 0,
  "errors": [],
  "auto_apply": {
   "jobinja": false,
