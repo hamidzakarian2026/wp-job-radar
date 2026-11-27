@@ -1,5 +1,5 @@
 {
- "last_run": "2026-11-27T03:22:32+03:30",
+ "last_run": "2026-11-27T11:59:47+03:30",
  "mode": "scan",
  "sources": {
   "jobinja": {
@@ -13,7 +13,7 @@
   "jobvision": {
    "ok": true,
    "listed": 132,
-   "checked": 0,
+   "checked": 1,
    "relevant": 0,
    "error": null
   },
